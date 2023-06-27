@@ -22,6 +22,7 @@ export default function App({ posts }: PostListPageProps) {
 }
 
 export const getStaticProps: GetStaticProps<PostListPageProps> = async () => {
+  // Chạy bên phía server nên dùng dc các parkage bên nodejs
   const res = await fetch(
     "https://js-post-api.herokuapp.com/api/posts?_page=1"
   );

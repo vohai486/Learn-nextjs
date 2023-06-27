@@ -1,9 +1,9 @@
-import Header from "@/components/common/header";
-import { MainLayout } from "@/components/layout";
+import { AdminLayout, MainLayout } from "@/components/layout";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { NextPageWithLayout } from "../models";
-
+import { Box, Typography, Button } from "@mui/material";
+import { Header } from "@/components/common/header";
 export interface IAppProps {}
 // const Header = dynamic(() => import("@/components/common/header"), {
 //   ssr: false,
@@ -35,8 +35,11 @@ const About: NextPageWithLayout = (props: IAppProps) => {
     );
   }
   return (
-    <div>
-      About Page
+    <Box>
+      <Typography component="h1" variant="h3" color="primary.main">
+        About Page
+      </Typography>
+      <Button variant="contained" color="success"></Button>
       <Header />
       <ul className="post-list">
         {postList.map((post: any) => (
@@ -44,11 +47,11 @@ const About: NextPageWithLayout = (props: IAppProps) => {
         ))}
       </ul>
       <button onClick={handleNextClick}>Next Page</button>
-    </div>
+    </Box>
   );
 };
 
-About.Layout = MainLayout;
+About.Layout = AdminLayout;
 export default About;
 // Muon dung MainLayout cho trang About add thuoc tinh Layout
 
