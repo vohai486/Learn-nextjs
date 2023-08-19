@@ -48,6 +48,7 @@ export default function handler(
           }
 
           const { accessToken, expiredAt } = JSON.parse(body);
+          console.log("JJ", { accessToken, expiredAt });
 
           // convert token to cookies
           const cookies = new Cookies(req, res, {
