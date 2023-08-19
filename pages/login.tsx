@@ -17,8 +17,8 @@ export default function LoginPage() {
   async function handleLoginClick() {
     try {
       await login({
-        username: "1",
-        password: "2",
+        username: "123213",
+        password: "2123123",
       });
       router.push("/about");
     } catch (error) {

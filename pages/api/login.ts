@@ -30,9 +30,9 @@ export default function handler(
       let body = "";
       proxyRes.on("data", function (chuck) {
         body += chuck;
-        console.log(chuck);
+        console.log("chuck", chuck);
       });
-      console.log(body);
+      console.log("body", body);
       proxyRes.on("end", function () {
         try {
           const isSuccess =
