@@ -3,8 +3,11 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import { PostCard } from "./post-card";
 import { Post } from "@/models";
+import { useAuth } from "@/hooks";
 
 export function RecentPosts() {
+  const { profile } = useAuth();
+  console.log(profile);
   // call API to get recent posts
   const postList: Post[] = [
     {

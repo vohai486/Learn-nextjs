@@ -12,7 +12,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  return new Promise<void>((resolve) => {
+  return new Promise<void>(() => {
     // convert cookies to header Authorization
     const cookies = new Cookies(req, res);
     const accessToken = cookies.get("access_token");
@@ -29,12 +29,10 @@ export default function handler(
       changeOrigin: true,
       selfHandleResponse: false, // trả về response từ server cho client luôn proxy kh xử lý
     });
-
     // res.status(200).json({ name: "PATH - Match all here" });
-
     //  khi có response trả về nó sẽ báo hàm handler
-    proxy.once("proxyRes", () => {
-      resolve();
-    });
+    // proxy.once("proxyRes", () => {
+    //   resolve();
+    // });
   });
 }

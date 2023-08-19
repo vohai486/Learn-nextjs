@@ -30,9 +30,23 @@ export default function handler(
       let body = "";
       proxyRes.on("data", function (chuck) {
         body += chuck;
+        console.log(chuck);
       });
+      console.log(body);
       proxyRes.on("end", function () {
         try {
+          const isSuccess =
+            proxyRes.statusCode &&
+            proxyRes.statusCode >= 200 &&
+            proxyRes.statusCode < 300;
+
+          if (!isSuccess) {
+            (res as NextApiResponse)
+              .status(proxyRes.statusCode || 500)
+              .json(body);
+            return resolve();
+          }
+
           const { accessToken, expiredAt } = JSON.parse(body);
 
           // convert token to cookies
@@ -50,8 +64,11 @@ export default function handler(
           // mà cookies với httpOnly chỉ được can thiệp từ phía server,
           //   nên chỉ có server mới xoá được cookie đó. Thành ra BẮT BUỘC phải có hàm logout() để gọi lên nhờ xoá cookies đi nhen Hà.
 
+          // (res as NextApiResponse).status(200).json({
+          //   message: "login successfully",
+          // });
           (res as NextApiResponse).status(200).json({
-            message: "login successfully",
+            message: "successfully",
           });
         } catch (error) {
           (res as NextApiResponse).status(500).json({

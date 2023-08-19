@@ -2,7 +2,10 @@ import * as React from "react";
 import { Box, Container, Stack, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import avatar from "@/images/avatar.png";
+import { useAuth } from "@/hooks";
 export function HeroSection() {
+  const { profile } = useAuth();
+  console.log(profile);
   return (
     <Box component="section" pt={{ xs: 4, md: 18 }} pb={{ xs: 7, md: 9 }}>
       <Container>

@@ -3,11 +3,12 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import { NextPageWithLayout } from "../models";
 import { Box, Typography, Button } from "@mui/material";
-import { Header } from "@/components/common/header";
+import dynamic from "next/dynamic";
+// import Header from "@/components/common/header";
 export interface IAppProps {}
-// const Header = dynamic(() => import("@/components/common/header"), {
-//   ssr: false,
-// });
+const Header = dynamic(() => import("@/components/common/header"), {
+  ssr: false,
+});
 const About: NextPageWithLayout = (props: IAppProps) => {
   const [postList, setPostList] = React.useState([]);
   const router = useRouter();

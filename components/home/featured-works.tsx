@@ -3,8 +3,11 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import { PostCard } from "./post-card";
 import { Work } from "@/models";
 import { WorkList } from "../work";
+import { useAuth } from "@/hooks";
 
 export function FeaturedWorks() {
+  const { profile } = useAuth();
+  console.log(profile);
   // call API to get recent posts
   const workList: Work[] = [
     {

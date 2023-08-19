@@ -5,7 +5,10 @@ import { Box } from "@mui/material";
 import { FeaturedWorks, HeroSection } from "@/components/home";
 import { RecentPosts } from "@/components/home/recent-posts";
 import { Seo } from "@/components/common";
+import { useAuth } from "@/hooks";
 const Home: NextPageWithLayout = () => {
+  const { profile, logout } = useAuth();
+  console.log(profile);
   return (
     <Box>
       <Seo

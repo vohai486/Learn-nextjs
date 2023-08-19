@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Cookies from "cookies";
 type Data = {
   message: string;
+  metadata: null;
 };
 export const config = {
   api: {
@@ -16,6 +17,7 @@ export default function handler(
   if (req.method !== "POST") {
     return res.status(404).json({
       message: "method not supported",
+      metadata: null,
     });
   }
   const cookies = new Cookies(req, res, {
@@ -24,5 +26,6 @@ export default function handler(
   cookies.set("access_token");
   res.status(200).json({
     message: "logout successfully",
+    metadata: null,
   });
 }
